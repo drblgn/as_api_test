@@ -556,7 +556,11 @@ const main = async (xrax) => {
   }
 
   const newReq = async (xrax: string) => {
-    await getCookie((embed_url + xrax + "?z="));
+    try {
+      await getCookie((embed_url + xrax + "?z="));
+    } catch (error) {
+      throw error;
+    }
     fake_window.xrax = xrax;
     let keys = await V();
     let getSourcesUrl = "https://rabbitstream.net/ajax/v2/embed-4/getSources?id=" + xrax + "&v=" + fake_window.localStorage.kversion + "&h=" + fake_window.localStorage.kid + "&b=1676800512"
